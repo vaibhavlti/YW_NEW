@@ -14,17 +14,12 @@ import {
 } from "react-pro-sidebar";
 
 //import icons from react icons
-import {
-  FiHome,
-  FiLogOut,
-  FiArrowLeftCircle,
-  FiArrowRightCircle,
-  FiUsers,
-} from "react-icons/fi";
+import { FiHome, FiLogOut, FiUsers } from "react-icons/fi";
 import { HiPencilAlt } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 
 import Header from "../Header/Header";
+
 //import sidebar css from react-pro-sidebar module and our custom css
 import "react-pro-sidebar/dist/css/styles.css";
 import "./SideBar.css";
@@ -36,12 +31,6 @@ const SideBar = () => {
   //create initial menuCollapse state using useState hook
   const [menuCollapse, setMenuCollapse] = useState(false);
   const [active, setActive] = useState(false);
-
-  //create a custom function that will change menucollapse state from false to true and true to false
-  const menuIconClick = () => {
-    //condition checking to change state from true to false and vice versa
-    menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
-  };
 
   const handleLogout = (e) => {
     // localStorage.removeItem('username');
@@ -62,20 +51,6 @@ const SideBar = () => {
             <div className="logotext">
               <img src={logo} className="img-home" alt={"logo"} />
 
-              <div className="closemenu" onClick={menuIconClick}>
-                {/* changing menu collapse icon on click */}
-                {menuCollapse ? (
-                  <FiArrowRightCircle
-                    style={{ marginTop: "45px" }}
-                    color="black"
-                  />
-                ) : (
-                  <FiArrowLeftCircle
-                    style={{ marginTop: "45px" }}
-                    color="black"
-                  />
-                )}
-              </div>
               <Header />
             </div>
           </SidebarHeader>
