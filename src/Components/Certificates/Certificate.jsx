@@ -30,14 +30,11 @@ function Certificate() {
           <Grid xs={9} mt={"-64px"}>
             <div className=" overflow-cls">
               {/* {user && user.role === "Contractor" ? ( */}
-              <DataTable></DataTable>
+              <DataTable />
+
               {/* ) : (
-                <AuthCertificateList></AuthCertificateList>
+                <AuthCertificateList />
               )} */}
-              {/* <Typography variant="h6" color="#2441E5" noWrap component="div">
-          EITSA Handover / EITSA Handback Certificate
-          </Typography>
-        <TabComponent></TabComponent> */}
             </div>
           </Grid>
         </Grid>

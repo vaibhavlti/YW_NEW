@@ -18,12 +18,21 @@ function CertificateForm() {
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2}>
-          <Grid xs={9} className="mt-10 mb-20 overflow-cls">
-            <Typography variant="h6" color="#2441E5" noWrap component="div">
-              EITSA Handover / EITSA Handback Certificate
-            </Typography>
-            <TabComponent></TabComponent>
+        <Grid container spacing={2} ml={"20%"} mt={0} width={"75%"}>
+          <Grid xs={9} mt={"-64px"}>
+            <div className=" overflow-cls">
+              <Grid
+                sx={{
+                  "justify-content": "flex-start",
+                  display: "flex",
+                }}
+              >
+                <Typography variant="h6" color="#2441E5" noWrap component="div">
+                  EITSA Handover / EITSA Handback Certificate
+                </Typography>
+              </Grid>
+              <TabComponent />
+            </div>
           </Grid>
         </Grid>
       </Box>

@@ -5,6 +5,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import {
   Box,
   Button,
+  Grid,
   InputAdornment,
   TextField,
   Typography,
@@ -156,7 +157,26 @@ export default function DataTable() {
           </Box>
         </Box>
       ) : (
-        <TabComponent showDetails={!showList} />
+        <>
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid
+              container
+              spacing={2}
+              ml={"24%"}
+              mt={0}
+              width={"75% !important"}
+              sx={{ maxWidth: "75%", }}
+            >
+              <Grid xs={9} mt={"-64px"}>
+                <div className=" overflow-cls">
+                  <Box display="flex">
+                    <TabComponent showDetails={!showList} />
+                  </Box>
+                </div>
+              </Grid>
+            </Grid>
+          </Box>
+        </>
       )}
     </>
   );
