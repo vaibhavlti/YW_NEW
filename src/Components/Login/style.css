@@ -18,8 +18,8 @@ body {
 
 .overflow-cls {
   /* overflow-y: scroll;
-    margin-top: 100px !important;
-    height: 400px; */
+  margin-top: 100px !important;
+  height: 400px; */
   /* margin-bottom: 20px; */
   width: 1000px !important;
   margin-left: -10px !important;
@@ -140,12 +140,12 @@ body {
   border: 1px;
   gap: 12px;
   /* height: Hug (527px);
-    top: 25%;
-    left: 25%;
-    padding: 60px;
-    border-radius: 4px;
-    border: 1px;
-    gap: 12px; */
+  top: 25%;
+  left: 25%;
+  padding: 60px;
+  border-radius: 4px;
+  border: 1px;
+  gap: 12px; */
 }
 .mt-65 {
   margin-top: -30px !important;

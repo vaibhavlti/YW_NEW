@@ -24,7 +24,6 @@ function App() {
             <Route path="/Home" element={<Home />} />
             <Route path="/profile" element={<ProfileForm />} />
             <Route path="/certificates" element={<Certificate />} />
-
             <Route path="certificate-form" element={<CertificateForm />} />
             {/* <Route path="*" element={<NoPage />} />  */}
           </Route>
