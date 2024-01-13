@@ -178,7 +178,7 @@ export function SectionOneTab(props) {
       <form onSubmit={handleSubmit(onSubmit)} id="hook-form">
         <Grid container rowSpacing={2} columnSpacing={3} mt="2px">
           <Grid item xs={12} md={6}>
-            <Typography mt="5px" component="div">
+            <Typography mt="5px" component="div" align="left">
               Type
             </Typography>
             <RadioGroup
@@ -202,7 +202,7 @@ export function SectionOneTab(props) {
             </RadioGroup>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography>Status</Typography>
+            <Typography align="left">Status</Typography>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -220,7 +220,7 @@ export function SectionOneTab(props) {
           </Grid>
 
           <Grid item xs={12} md={6}>
-            <Typography>Site*</Typography>
+            <Typography align="left">Site*</Typography>
             <Autocomplete
               disabled={props.showDetails}
               inputValue={"River"}
@@ -236,7 +236,7 @@ export function SectionOneTab(props) {
             />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography>Handover Reference*</Typography>
+            <Typography align="left">Handover Reference*</Typography>
             <TextField
               id="handover_reference"
               name={"Handover Reference"}
@@ -252,6 +252,7 @@ export function SectionOneTab(props) {
           </Grid>
           <Grid item xs={12} md={12}>
             <Typography
+              align="left"
               mt="5px"
               color="#2441E5"
               fontWeight={600}
@@ -263,7 +264,7 @@ export function SectionOneTab(props) {
           </Grid>
 
           <Grid item xs={12} md={6}>
-            <Typography>Authorized person name*</Typography>
+            <Typography align="left">Authorized person name*</Typography>
             <Autocomplete
               id="authorizedPersonDetails"
               disabled={props.showDetails}
@@ -279,7 +280,7 @@ export function SectionOneTab(props) {
             />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography>Telephone number*</Typography>
+            <Typography align="left">Telephone number*</Typography>
             <TextField
               id="auth_person_telephone_number"
               name={"Telephone number"}
@@ -294,7 +295,7 @@ export function SectionOneTab(props) {
             />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography>Contractor name*</Typography>
+            <Typography align="left">Contractor name*</Typography>
             <Autocomplete
               id="Contrator_Details"
               disabled={props.showDetails}
@@ -311,7 +312,7 @@ export function SectionOneTab(props) {
           </Grid>
 
           <Grid item xs={12} md={6}>
-            <Typography>Telephone number*</Typography>
+            <Typography align="left">Telephone number*</Typography>
             <TextField
               id="contractor_telephone_number"
               name={"Contractor number"}
@@ -327,7 +328,7 @@ export function SectionOneTab(props) {
           </Grid>
 
           <Grid item xs={12} md={6}>
-            <Typography>Contactor representative name*</Typography>
+            <Typography align="left">Contactor representative name*</Typography>
             <Autocomplete
               disabled={props.showDetails}
               inputValue={
@@ -345,7 +346,7 @@ export function SectionOneTab(props) {
             />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography>Telephone number</Typography>
+            <Typography align="left">Telephone number</Typography>
             <TextField
               id="representative_telephone_number"
               name={"Telephone number"}
