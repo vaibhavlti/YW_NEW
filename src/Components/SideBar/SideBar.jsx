@@ -12,7 +12,7 @@ import {
   SidebarFooter,
   SidebarContent,
 } from "react-pro-sidebar";
-
+import { Typography } from "@mui/material";
 //import icons from react icons
 import { FiHome, FiLogOut, FiUsers } from "react-icons/fi";
 import { HiPencilAlt } from "react-icons/hi";
@@ -45,7 +45,6 @@ const SideBar = () => {
   return (
     <>
       <div id="header">
-        {/* collapsed props to change menu size using menucollapse state */}
         <ProSidebar collapsed={menuCollapse}>
           <SidebarHeader>
             <div className="logotext">
@@ -82,9 +81,14 @@ const SideBar = () => {
               iconShape="square"
               style={{ paddingTop: 0, paddingBottom: 0 }}
             >
-              <MenuItem icon={<FiLogOut />} onClick={(e) => handleLogout(e)}>
+              {/* <MenuItem icon={<FiLogOut />} onClick={(e) => handleLogout(e)}>
                 Logout
-              </MenuItem>
+              </MenuItem> */}
+              <Typography variant="body2" color="white" align="center">
+                {"Copyright © "}
+                Yorkshire Water {new Date().getFullYear()}
+                {"."}
+              </Typography>
             </Menu>
           </SidebarFooter>
         </ProSidebar>
