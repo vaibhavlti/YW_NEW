@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import {
   AppBar,
   Box,
@@ -39,6 +40,7 @@ function Header() {
   };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
+    navigate("/profile");
   };
 
   const username = localStorage.getItem("username");
@@ -68,15 +70,15 @@ function Header() {
           <Box
             component="img"
             sx={{
-              height: 60,
-              width: 190,
+              height: 50,
+              width: 170,
               maxHeight: { xs: 233, md: 167 },
               maxWidth: { xs: 350, md: 250 },
             }}
             alt="The house from the offer."
             src={logo}
+            aria-label="hello"
           />
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -117,7 +119,6 @@ function Header() {
               ))}
             </Menu>
           </Box>
-
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
@@ -129,17 +130,25 @@ function Header() {
               </Button>
             ))}
           </Box>
-
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <IconButton onClick={handleOpenUserMenu} paddingLeft={"18px"}>
                 <Avatar
-                  //   alt={user && user.name}
+                    alt={"Test User"}
                   src="/static/images/avatar/2.jpg"
                 />
               </IconButton>
             </Tooltip>
-            {/* <span className="logout-text">{user && user.name}</span> */}
+          </Box>
+          <Box sx={{ flexGrow: 0 }}>
+            <Typography color="#2441E5" noWrap component="span">
+              <span className="logout-text">{"Test User"}</span>
+            </Typography>
+            <Typography color="#2441E5" noWrap component="div" paddingLeft={"2px"}>
+              <Link className="logout-text" onClick={(e) => handleLogout(e)}>
+                Logout
+              </Link>
+            </Typography>
           </Box>
         </Toolbar>
       </Container>

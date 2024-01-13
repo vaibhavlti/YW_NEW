@@ -40,8 +40,8 @@ body {
   width: 1044px !important;
   margin-left: -10px !important;
   /* margin-top: 80px; */
-  height: 480px;
-  overflow-y: scroll;
+  height: 500px;
+  overflow-y: auto;
 }
 
 .img-home {
