@@ -10,6 +10,7 @@ const Home = () => {
         alt={"logo"}
         style={{ paddingTop: "10%", paddingLeft: "10%" }}
       />
+      <h1>Hi you! Welcome to Yorkshire </h1>
     </div>
   );
 };

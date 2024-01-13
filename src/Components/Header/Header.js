@@ -77,7 +77,6 @@ function Header() {
             }}
             alt="The house from the offer."
             src={logo}
-            aria-label="hello"
           />
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -134,7 +133,7 @@ function Header() {
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} paddingLeft={"18px"}>
                 <Avatar
-                    alt={"Test User"}
+                  //   alt={user && user.name}
                   src="/static/images/avatar/2.jpg"
                 />
               </IconButton>
@@ -143,8 +142,14 @@ function Header() {
           <Box sx={{ flexGrow: 0 }}>
             <Typography color="#2441E5" noWrap component="span">
               <span className="logout-text">{"Test User"}</span>
+              {/* <span className="logout-text">{user && user.name}</span> */}
             </Typography>
-            <Typography color="#2441E5" noWrap component="div" paddingLeft={"2px"}>
+            <Typography
+              color="#2441E5"
+              noWrap
+              component="div"
+              paddingLeft={"2px"}
+            >
               <Link className="logout-text" onClick={(e) => handleLogout(e)}>
                 Logout
               </Link>
