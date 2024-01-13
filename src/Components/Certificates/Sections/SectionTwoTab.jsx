@@ -11,6 +11,9 @@ import {
   RadioGroup,
   TextField,
   Typography,
+  ListItem,
+  List,
+  ListSubheader
 } from "@mui/material";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
@@ -161,14 +164,15 @@ export function SectionTwoTab(props) {
     <Box p="15px" className="tab-cls">
       <form onSubmit={handleSubmit(onSubmit)} id="hook-form">
         <Box>
-          <Typography>Details(Location on site/working area(s))</Typography>
+          <Typography align="left">Details(Location on site/working area(s))</Typography>
           <Autocomplete
             disablePortal
             id="equipments"
             inputValue="River"
             disabled={props?.showDetails}
             options={siteOptions?.map((item) => item?.name)}
-            sx={{ width: 300 }}
+            // sx={{ width: 300 }}
+            size="small"
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -179,7 +183,7 @@ export function SectionTwoTab(props) {
         </Box>
         <Grid container rowSpacing={2} columnSpacing={3} mt="2px">
           <Grid item xs={12} md={6}>
-            <Typography>
+            <Typography align="left">
               Add site plan (Only a single plan is permitted per certificate)
             </Typography>
             <Box padding="20px" border=" 1px dashed #D8D8D8" height="87px">
@@ -189,9 +193,9 @@ export function SectionTwoTab(props) {
                 padding="7px"
                 width="305px"
               >
-                <Button>
+                <Button color="primary" variant="contained">
                   Site plan attachement
-                  <FileUploadIcon color="primary" />
+                  <FileUploadIcon color="blue" />
                   <input
                     type="file"
                     id="file"
@@ -215,13 +219,14 @@ export function SectionTwoTab(props) {
             </Box>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography>Equipment to be worked on</Typography>
+            <Typography align="left">Equipment to be worked on</Typography>
             <Autocomplete
               id="equipments"
               disabled={props?.showDetails}
               inputValue="Sewage Pump"
               options={equipmentDetailsOptions?.map((item) => item?.name)}
-              sx={{ width: 300 }}
+              // sx={{ width: 300 }}
+              size="small"
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -231,7 +236,7 @@ export function SectionTwoTab(props) {
             />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography>Site access arrangements</Typography>
+            <Typography align="left">Site access arrangements</Typography>
             <TextField
               id="site_details"
               name={"Site details"}
@@ -244,7 +249,7 @@ export function SectionTwoTab(props) {
             />
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography>Date work commences*</Typography>
+            <Typography align="left">Date work commences*</Typography>
             <TextField
               id="commences_date_details"
               type="date"
@@ -258,7 +263,7 @@ export function SectionTwoTab(props) {
             />
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography>Expected work completion date*</Typography>
+            <Typography align="left">Expected work completion date*</Typography>
             <TextField
               id="completion_date_details"
               type="date"
@@ -271,12 +276,12 @@ export function SectionTwoTab(props) {
               onChange={(e) => setCompletionDate(e.target.value)}
               // onMouseLeave={e=>setDuration(e.target.value)}
             />
-            <Typography fontSize="14px" ml="auto" component="div">
+            <Typography align="left" fontSize="14px" ml="auto" component="div">
               (Must be within 12 months of date work commence)
             </Typography>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Typography>Project Duration(in months)</Typography>
+            <Typography align="left">Project Duration(in months)</Typography>
             <TextField
               id="project_duration"
               name={"Project Duration"}
@@ -288,7 +293,7 @@ export function SectionTwoTab(props) {
             />
           </Grid>
           <Grid item xs={12} md={8}>
-            <Typography>Description of work to be done</Typography>
+            <Typography align="left">Description of work to be done</Typography>
             <TextField
               id="work_details"
               type="text"
@@ -302,7 +307,7 @@ export function SectionTwoTab(props) {
             />
           </Grid>
           <Grid item xs={12} md={4}>
-            <Typography mt="5px" component="div">
+            <Typography align="left" mt="5px" component="div">
               Joint site inspection undertaken
             </Typography>
             <RadioGroup
@@ -340,7 +345,7 @@ export function SectionTwoTab(props) {
             </RadioGroup>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Typography mt="5px" component="div">
+            <Typography align="left" mt="5px" component="div">
               Does the work fall under CDM
             </Typography>
             <RadioGroup
@@ -364,7 +369,7 @@ export function SectionTwoTab(props) {
             </RadioGroup>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Typography mt="5px">Start on site letter</Typography>
+            <Typography align="left" mt="5px">Start on site letter</Typography>
             <RadioGroup
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
@@ -386,10 +391,10 @@ export function SectionTwoTab(props) {
             </RadioGroup>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography mt="5px" color="#2441E5" fontSize="18px">
+            <Typography align="left" mt="5px" color="#2441E5" fontSize="18px">
               Health & Safety
             </Typography>
-            <Typography color="#131C42">
+            <Typography align="left" color="#131C42">
               Is there an approved health and safety plan and/or method
               statement for the work?
             </Typography>
@@ -414,17 +419,17 @@ export function SectionTwoTab(props) {
             </RadioGroup>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography mt="30px">
+            <Typography align="left" mt="30px">
               Add site plan (Only a single plan is permitted per certificate)
             </Typography>
             <Box padding="20px" border=" 1px dashed #D8D8D8">
               <Box
-                border="1px solid"
+                // border="1px solid"
                 color="#2441E5"
                 padding="7px"
                 width="350px"
               >
-                <Button sx={{ color: "#2441E5" }}>
+                <Button color="primary" variant="contained">
                   Health & safety plan attachment
                   <FileUploadIcon color="primary" />
                   <input
@@ -450,25 +455,26 @@ export function SectionTwoTab(props) {
             </Box>
           </Grid>
         </Grid>
-        <Typography fontWeight="700" fontSize="18px" mt="10px">
+        <Typography align="left" fontWeight="700" fontSize="18px" mt="10px">
           If there is no health and safety plan and/or method statement in
           place, the work cannot proceed.
         </Typography>
-        <Box border="1px solid #D8D8D8" padding="10px">
-          <Typography fontSize="18px">Note</Typography>
-          <FiberManualRecordIcon fontSize="1px" />{" "}
-          <Typography fontWeight="400" component="span">
-            Any work in existing YWS electrical systems is subjected to separate
-            authorization*. Check authorization in the method statement/H&S
-            plan. See section 4{" "}
-          </Typography>
-          <br />
-          <FiberManualRecordIcon fontSize="1px" />{" "}
-          <Typography fontWeight="400" component="span">
-            Entry into any YWS confined spaces not referred to in the H&S plan
-            or method statement will require separate authorization*. See
-            section 4{" "}
-          </Typography>
+        <Box border="1px solid #D8D8D8" padding="10px" ml={-2} mr={-2} mb={-2} variant="contained" sx={{backgroundColor:'#ddd'}}>
+          <Typography align="left" fontSize="18px">Note</Typography>
+          <Typography component="div" align="left"> 
+              <ul>
+                <li>
+                    Any work in existing YWS electrical systems is subjected to separate
+                    authorization*. Check authorization in the method statement/H&S
+                    plan. See section 4
+                </li>
+                <li>
+                    Entry into any YWS confined spaces not referred to in the H&S plan
+                    or method statement will require separate authorization*. See
+                    section 4
+                </li>
+              </ul>
+          </Typography>         
         </Box>
       </form>
     </Box>
