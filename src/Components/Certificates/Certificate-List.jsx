@@ -48,10 +48,12 @@ export default function DataTable() {
           });
   }, []);
 
-  const handleRowClick = () => {
+  const handleRowClick = (rid) => {
+    console.log("rows:",rows);
     fetch("https://localhost:7142/api/v1/certificates")
       .then((response) => response.json())
       .then((data) => {
+        console.log("certificate data",data);
         setCertificateDetails(data);
       })
       .catch((err) => {
@@ -134,7 +136,7 @@ export default function DataTable() {
                 },
               }}
               pageSizeOptions={[5, 10]}
-              onRowClick={handleRowClick}
+              onRowClick={(rows)=>{handleRowClick(rows.id)}}
               checkboxSelection
             />
           </Box>
@@ -145,7 +147,7 @@ export default function DataTable() {
             <Grid container spacing={2} ml={"5%"} mt={0} width={"75%"}>
               <Grid xs={9} mt={"-94px"}>
                 <div className=" overflow-cls">
-                  <TabComponent showDetails={!showList} />
+                  <TabComponent certificates={certificates} showDetails={!showList} />
                 </div>
               </Grid>
             </Grid>

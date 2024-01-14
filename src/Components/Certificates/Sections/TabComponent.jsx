@@ -21,6 +21,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 function TabComponent(props) {
+  console.log("tab props:", props);
   const [open, setOpen] = useState(false);
   const [showDetails, setShowDetails] = useState(props?.showDetails);
 

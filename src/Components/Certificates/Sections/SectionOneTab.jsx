@@ -174,6 +174,7 @@ export function SectionOneTab(props) {
     );
     console.log("siteoption", siteOptions);
   };
+  console.log("Props", props);
   return (
     <Box p="15px" className="tab-cls">
       <form onSubmit={handleSubmit(onSubmit)} id="hook-form">
