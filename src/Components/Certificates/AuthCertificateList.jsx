@@ -55,16 +55,14 @@ export default function AuthCertificateList() {
     fetch("https://localhost:7142/api/v1/certificates")
       .then((response) => response.json())
       .then((data) => {
+        console.log("AuthCert:"+ data);
         setCertificateDetails(data);
       })
       .catch((err) => {
         console.log(err.message);
       });
 
-    setCertificateDetails(
-      AuthPersonData?.filter((val, index) => val.id === cid)
-    );
-    // console.log(certificateDetails);
+  
     setShowList(false);
   };
   const rows = certificates?.map((item, index) => {
@@ -116,7 +114,8 @@ export default function AuthCertificateList() {
             <DataGrid
               rows={rows}
               columns={columns}
-              getRowId={() => Math.floor(Math.random() * 100000000)}
+              getRowId={(row) => row.cid}
+              //getRowId={() => Math.floor(Math.random() * 100000000)}
               initialState={{
                 pagination: {
                   paginationModel: { page: 0, pageSize: 5 },
@@ -130,7 +129,12 @@ export default function AuthCertificateList() {
                 },
               }}
               pageSizeOptions={[5, 10]}
-              onRowClick={handleRowClick}
+              //onRowClick={handleRowClick}
+              onRowClick={(params, event) => {
+                if (!event.ignore) {
+                  handleRowClick(params.row.cid);
+                }
+              }}
               checkboxSelection
             />
           </Box>
