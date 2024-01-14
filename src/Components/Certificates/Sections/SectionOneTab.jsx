@@ -50,10 +50,9 @@ export function SectionOneTab(props) {
 
   useEffect(() => {
     IsDataFromAPI && IsDataFromAPI[0].flag === false
-      ? setSiteOptions(Sites)
-      : fetch(
-        )
-          .then((response) => response.json())
+      ? setSiteOptions(Sites):
+      fetch('https://localhost:7142/api/v1/sites')
+        .then((response) => response.json())
           .then((data) => {
             setSiteOptions(data);
           })
@@ -209,11 +208,14 @@ export function SectionOneTab(props) {
           </Grid>
           <Grid item xs={12} md={6}>
             <Typography align="left">Status</Typography>
-            <Select
+            <Select 
               labelId="demo-simple-select-label"
               id="demo-simple-select"
+              
               value={1}
-              fullWidth={true}
+              sx={{ width: 300, marginLeft:"-158px" }}
+              // width={"75%"}
+              // fullWidth={true}
               disabled
               onChange={(e) => setStatus(e.target.value)}
               // onChange={handleChange}
@@ -247,6 +249,7 @@ export function SectionOneTab(props) {
               id="handover_reference"
               name={"Handover Reference"}
               disabled={props.showDetails}
+              sx={{ width: 300, marginLeft:"-158px" }}
               inputProps={{
                 maxLength: 255,
               }}
@@ -293,6 +296,7 @@ export function SectionOneTab(props) {
               id="auth_person_telephone_number"
               name={"Telephone number"}
               disabled={props.showDetails}
+              sx={{ width: 300, marginLeft:"-158px" }}
               value={auth_person_telephone_number}
               inputProps={{
                 maxLength: 255,
@@ -324,6 +328,7 @@ export function SectionOneTab(props) {
             <TextField
               id="contractor_telephone_number"
               name={"Contractor number"}
+              sx={{ width: 300, marginLeft:"-158px" }}
               inputProps={{
                 maxLength: 255,
               }}
@@ -358,6 +363,7 @@ export function SectionOneTab(props) {
             <TextField
               id="representative_telephone_number"
               name={"Telephone number"}
+              sx={{ width: 300, marginLeft:"-158px" }}
               inputProps={{
                 maxLength: 255,
               }}
