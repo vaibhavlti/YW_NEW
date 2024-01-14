@@ -21,7 +21,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 function TabComponent(props) {
-  console.log("tab props:", props);
+  console.log("tab props:", props.certificate);
   const [open, setOpen] = useState(false);
   const [showDetails, setShowDetails] = useState(props?.showDetails);
 
@@ -85,10 +85,10 @@ function TabComponent(props) {
         className="mb-3"
       >
         <Tab eventKey="test-tab" title="Section 1">
-          <SectionOneTab showDetails={showDetails}></SectionOneTab>
+          <SectionOneTab certificate={props.certificate} showDetails={showDetails}></SectionOneTab>
         </Tab>
         <Tab eventKey="section2" title="Section 2">
-          <SectionTwoTab showDetails={showDetails}></SectionTwoTab>
+          <SectionTwoTab  certificate={props.certificate} showDetails={showDetails}></SectionTwoTab>
         </Tab>
         <Tab eventKey="section3" title="Section 3">
           <SectionThreeTab showDetails={showDetails}></SectionThreeTab>

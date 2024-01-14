@@ -32,9 +32,13 @@ const columns = [
 ];
 
 export default function DataTable() {
+  const navigate = useNavigate();
+
   const [certificates, setCertificates] = useState([]);
+  const [selectedCert, setSelectedCert] =useState({});
   const [showList, setShowList] = useState(true);
   const [, setCertificateDetails] = useState([]);
+
   useEffect(() => {
     IsDataFromAPI && IsDataFromAPI[0].flag === false
       ? setCertificates(ContractorPersonData)
@@ -48,23 +52,10 @@ export default function DataTable() {
           });
   }, []);
 
-  const handleRowClick = (rid) => {
-    console.log("rows:",rows);
-    fetch("https://localhost:7142/api/v1/certificates")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("certificate data",data);
-        setCertificateDetails(data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-    setShowList(false);
-  };
-
   const rows = certificates?.map((item, index) => {
+    
     return {
-      id: index,
+      id: item.id,
       Handover_Ref: item.handover_Reference,
       Last_Modified: item?.updatedOn !== "" ? item?.updaredOn : item?.createdOn,
       Authorized_Person: item?.authorized_Person,
@@ -73,7 +64,10 @@ export default function DataTable() {
     };
   });
 
-  let navigate = useNavigate();
+  const handleRowClick = (rowData) => {
+    setSelectedCert(certificates.filter(val => val.id.includes(rowData?.row?.id))[0]);
+    setShowList(false);
+  };
 
   return (
     <>
@@ -136,7 +130,9 @@ export default function DataTable() {
                 },
               }}
               pageSizeOptions={[5, 10]}
-              onRowClick={(rows)=>{handleRowClick(rows.id)}}
+              onRowClick={(rowData) => {
+                handleRowClick(rowData);
+              }}
               checkboxSelection
             />
           </Box>
@@ -147,7 +143,10 @@ export default function DataTable() {
             <Grid container spacing={2} ml={"5%"} mt={0} width={"75%"}>
               <Grid xs={9} mt={"-94px"}>
                 <div className=" overflow-cls">
-                  <TabComponent certificates={certificates} showDetails={!showList} />
+                  <TabComponent
+                    certificate={selectedCert}
+                    showDetails={!showList}
+                  />
                 </div>
               </Grid>
             </Grid>

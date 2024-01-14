@@ -125,7 +125,7 @@ export function SectionOneTab(props) {
       type: type,
       mode: "Manual",
       site: site,
-      handover_Reference: "Certificate_Testing_Handover8",
+      handover_Reference: "Certificate_Testing_Handover",
       authorized_Person: person_name,
       contractor: contractor_name,
       contractor_Representative: representative_name,
