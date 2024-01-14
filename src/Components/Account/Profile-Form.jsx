@@ -8,15 +8,15 @@ function ProfileForm() {
   );
   // const { token, user } = userDetails;
   console.log(userDetails);
-  let IsDataFromAPI = JSON.parse(localStorage.getItem("IsDataFromAPI"));
-  let [checked, setChecked] = useState(IsDataFromAPI[0].flag);
+ // let IsDataFromAPI = JSON.parse(localStorage.getItem("IsDataFromAPI"));
+  //let [checked, setChecked] = useState(IsDataFromAPI[0].flag);
 
   const handleChange = (event) => {
     // IsDataFromAPI.push();
     // console.log(event.target.checked);
-    IsDataFromAPI[0].flag = event.target.checked ? true : false;
-    setChecked(event.target.checked);
-    localStorage.setItem("IsDataFromAPI", IsDataFromAPI[0].flag);
+    //IsDataFromAPI[0].flag = event.target.checked ? true : false;
+    //setChecked(event.target.checked);
+  //  localStorage.setItem("IsDataFromAPI", IsDataFromAPI[0].flag);
     // console.log(localStorage.getItem('IsDataFromAPI'),IsDataFromAPI);
   };
   // useEffect(()=>{
@@ -70,12 +70,12 @@ function ProfileForm() {
             />
           </div>
         </div>
-        <div style={{ paddingLeft: "15%" }}>
+        {/* <div style={{ paddingLeft: "15%" }}>
           <FormControlLabel
             control={<Switch checked={checked} onChange={handleChange} />}
             label="Is Data From API"
           />
-        </div>
+        </div> */}
       </Box>
     </>
   );

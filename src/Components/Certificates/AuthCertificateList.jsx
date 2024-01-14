@@ -36,9 +36,9 @@ export default function AuthCertificateList() {
   const [showList, setShowList] = useState(true);
   const [certificateDetails, setCertificateDetails] = useState([]);
 
-  let IsDataFromAPI = localStorage.getItem("IsDataFromAPI");
+  let IsDataFromAPI = true;//localStorage.getItem("IsDataFromAPI");
   let AuthPersonData = JSON.parse(localStorage.getItem("AuthPersonData"));
-  console.log("IsDataFromAPI", IsDataFromAPI);
+  
   useEffect(() => {
     IsDataFromAPI === false
       ? setCertificates(AuthPersonData)
@@ -50,7 +50,7 @@ export default function AuthCertificateList() {
             setCertificates(
               data && data.length
                 ? data.filter(
-                     (val, index) => val.authorized_Person === username
+                     (val, index) => val.authorized_Person === username && val.status==='Handover To Approve'
                   )
                 : AuthPersonData
             );
