@@ -31,18 +31,18 @@ export function SectionOneTab(props) {
     "Certificate_Testing_Handover8"
   );
   const [person_name, setPersonname] = useState();
-  props?.certificates !== undefined
-      ? props?.certificates?.authorized_Person
-      : ""
   const [contractor_name, setContractorName] = useState("");
   const [contractor_telephone_number, setContractorTele] =
+    useState("");
+
+    const [auth_person_telephone_number, setAuthTele] =
     useState("");
   const [representative_name, setRepresentative] = useState("");
   const [representative_telephone_number, setRepresentativeTele] =
     useState("");
   const [authorizedPersonDetails, setAuthorizedPersonDetails] = useState(props?.certificates !== undefined
-    ? props?.certificates?.authorized_Person
-    : "");
+    ? [props?.certificates?.authorized_Person]
+    : []);
   const [contactorDetails, setContractorDetails] = useState();
   const [contactorRepDetails, setContractorRepDetails] = useState();
   const [siteOptions, setSiteOptions] = useState();

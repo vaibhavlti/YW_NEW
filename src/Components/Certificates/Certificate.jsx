@@ -17,7 +17,7 @@ function Certificate() {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, overflowX:"hidden", overflow:"hidden" }}>
         <Grid container spacing={2} ml={"20%"} mt={0} width={"75%"}>
           <Grid xs={9} mt={"-64px"}>
             <div className=" overflow-cls">

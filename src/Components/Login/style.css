@@ -28,10 +28,10 @@ body {
 }
 
 .css-wvz34p {
-  width: 1044px !important;
+  width: 1005px !important;
   margin-left: -10px !important;
 
-  height: 500px;
+   height: 460px;
   overflow-y: auto;
 }
 
@@ -108,6 +108,7 @@ body {
   overflow-y: scroll;
   height: 450px;
   margin-top: 0px;
+  width: 135% !important;
 }
 
 .tab-cls {
@@ -179,4 +180,8 @@ body {
 .MuiButton-containedPrimary {
   color: #fff;
   background-color: #0d6efd;
+}
+
+.css-qvtrhg-MuiDataGrid-virtualScroller {
+  overflow-x: hidden !important;
 }

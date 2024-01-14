@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Grid, Typography, Button, TextField } from "@mui/material";
-import { CheckCircleIcon, CancelIcon } from "@mui/icons-material";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 export function ViewAuthCertificate(props) {
   const [comments, setComments] = useState("");
