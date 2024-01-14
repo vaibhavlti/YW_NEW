@@ -35,7 +35,7 @@ export default function DataTable() {
   const navigate = useNavigate();
 
   const [certificates, setCertificates] = useState([]);
-  const [selectedCert, setSelectedCert] =useState({});
+  const [selectedCert, setSelectedCert] = useState({});
   const [showList, setShowList] = useState(true);
   const [, setCertificateDetails] = useState([]);
 
@@ -53,7 +53,6 @@ export default function DataTable() {
   }, []);
 
   const rows = certificates?.map((item, index) => {
-    
     return {
       id: item.id,
       Handover_Ref: item.handover_Reference,
@@ -79,7 +78,9 @@ export default function DataTable() {
   // };
 
   const handleRowClick = (rowData) => {
-    setSelectedCert(certificates.filter(val => val.id.includes(rowData?.row?.id))[0]);
+    setSelectedCert(
+      certificates.filter((val) => val.id.includes(rowData?.row?.id))[0]
+    );
     setShowList(false);
   };
 

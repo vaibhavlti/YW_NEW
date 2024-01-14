@@ -1,14 +1,8 @@
-import { Grid, Typography, Button, TextField } from "@mui/material";
-// import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useState } from "react";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import CancelIcon from "@mui/icons-material/Cancel";
-// import { CenterFocusStrong } from "@mui/icons-material";
-// import { useNavigate } from "react-router-dom";
+import { Grid, Typography, Button, TextField } from "@mui/material";
+import { CheckCircleIcon, CancelIcon } from "@mui/icons-material";
 
 export function ViewAuthCertificate(props) {
-  // const [showList, setShowList] = useState(props.showList);
-  // let navigate = useNavigate();
   const [comments, setComments] = useState("");
   const onSave = (val) => {
     let formData = {
@@ -25,7 +19,6 @@ export function ViewAuthCertificate(props) {
     //     },
     //     body: formData,
     //   });
-    console.log(formData);
   };
   return (
     <Grid className="certificate-design">
@@ -227,9 +220,7 @@ export function ViewAuthCertificate(props) {
           </Button>
         </Grid>
         <Grid item xs={12} md={3}></Grid>
-
         <Grid item xs={12} md={3} className="grid-sp"></Grid>
-        {/* </Grid> */}
       </Grid>
     </Grid>
   );

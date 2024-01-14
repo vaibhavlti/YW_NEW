@@ -1,10 +1,5 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-
 import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
+import { Box, Grid, Paper } from "@mui/material";
 
 import DataTable from "./Certificate-List";
 import AuthCertificateList from "./AuthCertificateList";
@@ -18,11 +13,6 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function Certificate() {
-  const [showForm, setShowForm] = useState(false);
-  // const userDetails = useSelector(
-  //   (state) => state && state.commonReducer && state.commonReducer.user
-  // );
-
   const role = localStorage.getItem("role");
 
   return (
@@ -31,15 +21,15 @@ function Certificate() {
         <Grid container spacing={2} ml={"20%"} mt={0} width={"75%"}>
           <Grid xs={9} mt={"-64px"}>
             <div className=" overflow-cls">
-              {role === "Contractor" ? ( 
-              <Grid xs={9}>
-                <DataTable />
-              </Grid>
-               ) : (
+              {role === "Contractor" ? (
                 <Grid xs={9}>
-                <AuthCertificateList />
-              </Grid>
-              )} 
+                  <DataTable />
+                </Grid>
+              ) : (
+                <Grid xs={9}>
+                  <AuthCertificateList />
+                </Grid>
+              )}
             </div>
           </Grid>
         </Grid>
