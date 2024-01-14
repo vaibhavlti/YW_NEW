@@ -17,15 +17,9 @@ body {
 }
 
 .overflow-cls {
-  /* overflow-y: scroll;
-  margin-top: 100px !important;
-  height: 400px; */
-  /* margin-bottom: 20px; */
   width: 1000px !important;
   margin-left: -10px !important;
   margin-top: 150px !important;
-  /* height: 400px; */
-  /* overflow-y: scroll; */
 }
 
 .css-ckyhk3 {
@@ -120,9 +114,10 @@ body {
 }
 
 .tab-cls {
-  height: 400px;
-  overflow-y: scroll;
+  height: 350px;
+  overflow-y: auto;
   margin-bottom: 30px;
+  overflow-x: hidden;
 }
 
 .logout-text {

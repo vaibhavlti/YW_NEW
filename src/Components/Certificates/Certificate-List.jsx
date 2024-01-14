@@ -63,7 +63,7 @@ export default function DataTable() {
       });
     setShowList(false);
   };
-  console.log("cert", certificateDetails);
+
   const rows = certificates?.map((item, index) => {
     return {
       id: index,
@@ -158,20 +158,11 @@ export default function DataTable() {
         </Box>
       ) : (
         <>
-          <Box sx={{ flexGrow: 1 }}>
-            <Grid
-              container
-              spacing={2}
-              ml={"24%"}
-              mt={0}
-              width={"75% !important"}
-              sx={{ maxWidth: "75%", }}
-            >
-              <Grid xs={9} mt={"-64px"}>
+          <Box sx={{ flexGrow: 1 }} border="1px solid" width={"107%"}>
+            <Grid container spacing={2} ml={"5%"} mt={0} width={"75%"}>
+              <Grid xs={9} mt={"-94px"}>
                 <div className=" overflow-cls">
-                  <Box display="flex">
-                    <TabComponent showDetails={!showList} />
-                  </Box>
+                  <TabComponent showDetails={!showList} />
                 </div>
               </Grid>
             </Grid>

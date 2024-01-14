@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
@@ -11,11 +10,7 @@ import {
   RadioGroup,
   TextField,
   Typography,
-  ListItem,
-  List,
-  ListSubheader
 } from "@mui/material";
-import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import {
   Sites,
@@ -164,7 +159,9 @@ export function SectionTwoTab(props) {
     <Box p="15px" className="tab-cls">
       <form onSubmit={handleSubmit(onSubmit)} id="hook-form">
         <Box>
-          <Typography align="left">Details(Location on site/working area(s))</Typography>
+          <Typography align="left">
+            Details(Location on site/working area(s))
+          </Typography>
           <Autocomplete
             disablePortal
             id="equipments"
@@ -214,7 +211,6 @@ export function SectionTwoTab(props) {
                     }}
                   />
                 </Button>
-                {/* <img src={hnsfile} /> */}
               </Box>
             </Box>
           </Grid>
@@ -225,7 +221,6 @@ export function SectionTwoTab(props) {
               disabled={props?.showDetails}
               inputValue="Sewage Pump"
               options={equipmentDetailsOptions?.map((item) => item?.name)}
-              // sx={{ width: 300 }}
               size="small"
               renderInput={(params) => (
                 <TextField
@@ -274,7 +269,6 @@ export function SectionTwoTab(props) {
               fullWidth
               format="MM/DD/YYYY"
               onChange={(e) => setCompletionDate(e.target.value)}
-              // onMouseLeave={e=>setDuration(e.target.value)}
             />
             <Typography align="left" fontSize="14px" ml="auto" component="div">
               (Must be within 12 months of date work commence)
@@ -369,7 +363,9 @@ export function SectionTwoTab(props) {
             </RadioGroup>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Typography align="left" mt="5px">Start on site letter</Typography>
+            <Typography align="left" mt="5px">
+              Start on site letter
+            </Typography>
             <RadioGroup
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
@@ -459,22 +455,32 @@ export function SectionTwoTab(props) {
           If there is no health and safety plan and/or method statement in
           place, the work cannot proceed.
         </Typography>
-        <Box border="1px solid #D8D8D8" padding="10px" ml={-2} mr={-2} mb={-2} variant="contained" sx={{backgroundColor:'#ddd'}}>
-          <Typography align="left" fontSize="18px">Note</Typography>
-          <Typography component="div" align="left"> 
-              <ul>
-                <li>
-                    Any work in existing YWS electrical systems is subjected to separate
-                    authorization*. Check authorization in the method statement/H&S
-                    plan. See section 4
-                </li>
-                <li>
-                    Entry into any YWS confined spaces not referred to in the H&S plan
-                    or method statement will require separate authorization*. See
-                    section 4
-                </li>
-              </ul>
-          </Typography>         
+        <Box
+          border="1px solid #D8D8D8"
+          padding="10px"
+          ml={-2}
+          mr={-2}
+          mb={-2}
+          variant="contained"
+          sx={{ backgroundColor: "#ddd" }}
+        >
+          <Typography align="left" fontSize="18px">
+            Note
+          </Typography>
+          <Typography component="div" align="left">
+            <ul>
+              <li>
+                Any work in existing YWS electrical systems is subjected to
+                separate authorization*. Check authorization in the method
+                statement/H&S plan. See section 4
+              </li>
+              <li>
+                Entry into any YWS confined spaces not referred to in the H&S
+                plan or method statement will require separate authorization*.
+                See section 4
+              </li>
+            </ul>
+          </Typography>
         </Box>
       </form>
     </Box>
