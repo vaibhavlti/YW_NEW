@@ -72,8 +72,9 @@ const Login = () => {
     onSubmit: async (values, { resetForm }) => {
       const formData = JSON.stringify(values);
       const { email, password } = values;
-      // console.log('formData',formData);
-      /* const response = await fetch("http://localhost:5000/api/login-user", {
+  
+
+      const response = await fetch("https://localhost:7142/api/v1/login?mobileNo="+email+"&password="+password, {
         method: "POST",
         crossDomain: true,
         headers: {
@@ -84,117 +85,28 @@ const Login = () => {
         body: formData,
       });
 
-      const data = await response.json();*/
+      const data = await response.json();
 
-    let data = {
-      username: "auth@gmail.com",
-      password: "Password123",
-      status: "ok",
-    };
+   if (data) {
+    console.log('test',data.user);
 
-    let response = {};
-    if (data) {
-      console.log("test", data.username);
-      if (
-        data.status === "ok" &&
-        data.username === email &&
-        data.password === password
-      ) {
-        localStorage.setItem("user", JSON.stringify(data));
-        // console.log("data", data.email);
-        // const payload = {
-        //   email: email,
-        // };
-        // dispatch({ type: "ADD_USER", payload: payload });
-        response = {
-          token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlRvbSBBZGVuYSIsIm5iZiI6MTcwMjM3MzA0NCwiZXhwIjoxNzAyNDU5NDQ0LCJpYXQiOjE3MDIzNzMwNDR9.wgwVZm5UoqGJWrh-OGHD_YgPw1u4uFaoln7HhByvP48",
-          message: "Login successful",
-          user: {
-            id: "1003",
-            name: "Tom Adena",
-            role: "Authorized Person",
-            company: "Yorkshire Water",
-            mobileNumber: "7654320900",
-          },
-        };
-        // console.log('test');
-        // localStorage.setItem('username', response.user.name);
-        // localStorage.setItem('role', response.user.role);
-        // localStorage.setItem('mobileNumber', response.user.mobileNumber);
-        // localStorage.setItem('token', response.token);
-        // navigate("/profile");
-      }
-      data = {
-        username: "contractor@gmail.com",
-        password: "Password123",
-        status: "ok",
-      };
-      if (
-        data.status === "ok" &&
-        data.username === email &&
-        data.password === password
-      ) {
-        localStorage.setItem("user", JSON.stringify(data));
-        // console.log("data", data.email);
-        // const payload = {
-        //   email: email,
-        // };
-        // dispatch({ type: "ADD_USER", payload: payload });
-
-          response = {
-            token:
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlRvbSBBZGVuYSIsIm5iZiI6MTcwMjM3MzA0NCwiZXhwIjoxNzAyNDU5NDQ0LCJpYXQiOjE3MDIzNzMwNDR9.wgwVZm5UoqGJWrh-OGHD_YgPw1u4uFaoln7HhByvP48",
-            message: "Login successful",
-            user: {
-              id: "1005",
-              name: "Andy Aleby",
-              role: "Contractor",
-              company: "Jacobs Field Service Ltd",
-              mobileNumber: "2555678219",
-            },
-          };
-          // localStorage.setItem('username', response.user.name);
-          // localStorage.setItem('role', response.user.role);
-          // localStorage.setItem('mobileNumber', response.user.mobileNumber);
-          // localStorage.setItem('token', response.token);
-          // navigate("/profile");
-        }
-        if (response) {
-          dispatch(
-            login({
-              token: response.token,
-              user: response.user,
-            })
-          );
-          localStorage.setItem(
-            "AuthPersonData",
-            JSON.stringify(AuthPersonData)
-          );
-          localStorage.setItem(
-            "ContractorPersonData",
-            JSON.stringify(ContractorPersonData)
-          );
-          localStorage.setItem("IsDataFromAPI", JSON.stringify(IsDataFromAPI));
-          localStorage.setItem(
-            "AuthUserDetails",
-            JSON.stringify(AuthUserDetails)
-          );
-          localStorage.setItem(
-            "ContractorUserDetails",
-            JSON.stringify(ContractorUserDetails)
-          );
-          localStorage.setItem("Sites", JSON.stringify(Sites));
-          localStorage.setItem(
-            "EquipmentDetails",
-            JSON.stringify(EquipmentDetails)
-          );
-          localStorage.setItem("Certificates", JSON.stringify(Certificates));
-          navigate("/home");
-        }
-      }
-      // console.log("res1", data.data);
-
+    if(data.user.role==='Contractor' || data.user.role ==='Authorized Person')
+    {
+     
+      localStorage.setItem('username', data.user.name);
+      localStorage.setItem('role', data.user.role);
+      localStorage.setItem('mobileNumber', data.user.mobileNumber);
+      localStorage.setItem('token', data.token);
+      dispatch(
+        login({
+          "token": data.token,
+          "user": data.user
+        })
+      );
+      navigate("/home");
+    }
+  }
+     
       setLoading(true);
       setTimeout(() => {
         setLoading(false);

@@ -51,7 +51,7 @@ function TabComponent(props) {
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
         <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-          YW is submitted for Approval!
+          Certificate is submitted for the Approval!
         </Alert>
       </Snackbar>
       <Box display="flex" className="mb-5 mt-65" justifyContent="end">

@@ -22,23 +22,24 @@ function Certificate() {
   // const userDetails = useSelector(
   //   (state) => state && state.commonReducer && state.commonReducer.user
   // );
-  // const { token, user } = userDetails;
+
+  const role = localStorage.getItem("role");
+
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2} ml={"20%"} mt={0} width={"75%"}>
           <Grid xs={9} mt={"-64px"}>
             <div className=" overflow-cls">
-              {/* {user && user.role === "Contractor" ? ( */}
-
+              {role === "Contractor" ? ( 
               <Grid xs={9}>
                 <DataTable />
               </Grid>
-              {/* ) : (
+               ) : (
                 <Grid xs={9}>
                 <AuthCertificateList />
               </Grid>
-              )} */}
+              )} 
             </div>
           </Grid>
         </Grid>

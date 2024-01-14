@@ -31,25 +31,26 @@ export default function AuthCertificateList() {
   // );
 
   // const { token, user } = userDetails;
+  const username = localStorage.getItem("username");
   const [certificates, setCertificates] = useState([]);
   const [showList, setShowList] = useState(true);
   const [certificateDetails, setCertificateDetails] = useState([]);
 
-  let IsDataFromAPI = JSON.parse(localStorage.getItem("IsDataFromAPI"));
+  let IsDataFromAPI = localStorage.getItem("IsDataFromAPI");
   let AuthPersonData = JSON.parse(localStorage.getItem("AuthPersonData"));
-  console.log("IsDataFromAPI", IsDataFromAPI[0]);
+  console.log("IsDataFromAPI", IsDataFromAPI);
   useEffect(() => {
-    IsDataFromAPI && IsDataFromAPI[0].flag === false
+    IsDataFromAPI === false
       ? setCertificates(AuthPersonData)
       : fetch(
-          "https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/certificates"
+          "https://localhost:7142/api/v1/certificates"
         )
           .then((response) => response.json())
           .then((data) => {
             setCertificates(
               data && data.length
                 ? data.filter(
-                    // (val, index) => val.authorized_Person === user.name
+                     (val, index) => val.authorized_Person === username
                   )
                 : AuthPersonData
             );
@@ -60,14 +61,14 @@ export default function AuthCertificateList() {
   }, []);
 
   const handleRowClick = (cid) => {
-    // fetch('https://15187da4-1a39-4d0f-b511-f1ca4ea52b39.mock.pstmn.io/certificates')
-    // .then((response) => response.json())
-    // .then((data) => {
-    //   setCertificateDetails(data);
-    // })
-    // .catch((err) => {
-    //    console.log(err.message);
-    // });
+    fetch('https://localhost:7142/api/v1/certificates')
+    .then((response) => response.json())
+    .then((data) => {
+      setCertificateDetails(data);
+    })
+    .catch((err) => {
+       console.log(err.message);
+    });
 
     setCertificateDetails(
       AuthPersonData?.filter((val, index) => val.id === cid)
@@ -91,7 +92,7 @@ export default function AuthCertificateList() {
   return (
     <>
       {showList ? (
-        <Box border="1px solid" padding={2}>
+        <Box padding={2}>
           <Typography
             fontWeight="600 !important"
             lineHeight="45px !important"

@@ -39,7 +39,7 @@ export default function DataTable() {
     IsDataFromAPI && IsDataFromAPI[0].flag === false
       ? setCertificates(ContractorPersonData)
       : fetch(
-          "https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/certificates"
+          "https://localhost:7142/api/v1/certificates"
         )
           .then((response) => response.json())
           .then((data) => {
@@ -52,7 +52,7 @@ export default function DataTable() {
 
   const handleRowClick = () => {
     fetch(
-      "https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/certificates"
+      "https://localhost:7142/api/v1/certificates"
     )
       .then((response) => response.json())
       .then((data) => {
@@ -158,7 +158,7 @@ export default function DataTable() {
         </Box>
       ) : (
         <>
-          <Box sx={{ flexGrow: 1 }} border="1px solid" width={"107%"}>
+          <Box sx={{ flexGrow: 1 }} width={"107%"}>
             <Grid container spacing={2} ml={"5%"} mt={0} width={"75%"}>
               <Grid xs={9} mt={"-94px"}>
                 <div className=" overflow-cls">

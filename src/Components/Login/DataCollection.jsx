@@ -271,7 +271,7 @@ export const ContractorPersonData = [
     }
   ];
 
-export const IsDataFromAPI = [ {"flag" : false }];
+export const IsDataFromAPI = [ {"flag" : true }];
 
 export const AuthUserDetails = [
     {

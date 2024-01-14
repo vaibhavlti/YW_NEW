@@ -16,7 +16,7 @@ function ProfileForm() {
     // console.log(event.target.checked);
     IsDataFromAPI[0].flag = event.target.checked ? true : false;
     setChecked(event.target.checked);
-    localStorage.setItem("IsDataFromAPI", JSON.stringify(IsDataFromAPI));
+    localStorage.setItem("IsDataFromAPI", IsDataFromAPI[0].flag);
     // console.log(localStorage.getItem('IsDataFromAPI'),IsDataFromAPI);
   };
   // useEffect(()=>{

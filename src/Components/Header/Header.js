@@ -25,11 +25,7 @@ const pages = [];
 
 function Header() {
   const navigate = useNavigate();
-  const userDetails = useSelector(
-    (state) => state && state.commonReducer && state.commonReducer.user
-  );
 
-  //   const { user } = userDetails;
   const username = localStorage.getItem("username");
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -43,10 +39,10 @@ function Header() {
   };
 
   const handleLogout = (e) => {
-    // localStorage.removeItem('username');
-    // localStorage.removeItem('token');
-    // localStorage.removeItem('role');
-    // localStorage.removeItem('mobileNumber');
+    localStorage.removeItem('username');
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('mobileNumber');
     // setIsLoggedin(false);
     e.preventDefault();
     navigate("/");
@@ -116,7 +112,7 @@ function Header() {
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} paddingLeft={"18px"}>
                 <Avatar
-                  //   alt={user && user.name}
+                     alt={username}
                   src="/static/images/avatar/2.jpg"
                 />
               </IconButton>
@@ -124,8 +120,7 @@ function Header() {
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Typography color="#2441E5" noWrap component="span">
-              <span className="logout-text">{"Test User"}</span>
-              {/* <span className="logout-text">{user && user.name}</span> */}
+              <span className="logout-text">{username}</span> 
             </Typography>
             <Typography
               color="#2441E5"

@@ -43,7 +43,7 @@ export function SectionTwoTab(props) {
     IsDataFromAPI && IsDataFromAPI[0].flag === false
       ? setCertificates(Certificates)
       : fetch(
-          "https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/certificates"
+          "https://localhost:7142/api/v1/certificates"
         )
           .then((response) => response.json())
           .then((data) => {
@@ -58,7 +58,7 @@ export function SectionTwoTab(props) {
     IsDataFromAPI && IsDataFromAPI[0].flag === false
       ? setEquipmentDetailsOptions(EquipmentDetails)
       : fetch(
-          "https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/equipments"
+          "https://localhost:7142/api/v1/equipments"
         )
           .then((response) => response.json())
           .then((data) => {
@@ -73,7 +73,7 @@ export function SectionTwoTab(props) {
     IsDataFromAPI && IsDataFromAPI[0].flag === false
       ? setSiteOptions(Sites)
       : fetch(
-          "https://661a292e-21a1-4ced-97c6-39f8ca00c57b.mock.pstmn.io/sites"
+          "https://localhost:7142/api/v1/sites"
         )
           .then((response) => response.json())
           .then((data) => {
@@ -104,6 +104,8 @@ export function SectionTwoTab(props) {
     setBrowsedSitePlanData(URL.createObjectURL(e.target.files[0]));
   };
   const { handleSubmit } = useForm();
+
+  const username = localStorage.getItem("username");
   const onSubmit = async (e) => {
     let certificate_id = localStorage.getItem("certificate_id");
     let formData = {
@@ -131,7 +133,7 @@ export function SectionTwoTab(props) {
       handback_Date: "",
       handback_Comment: "",
       createdOn: "12-12-2023 08:03:13 AM",
-      createdBy: "Paul Anderson",
+      createdBy: username,
       updatedOn: "",
       updatedBy: "",
       isActive: "True",

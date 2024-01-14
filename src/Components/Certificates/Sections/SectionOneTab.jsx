@@ -22,6 +22,8 @@ import {
 } from "../../Login/DataCollection";
 
 export function SectionOneTab(props) {
+  const username = localStorage.getItem("username");
+
   const [type, setType] = useState("");
   const [site, setSite] = useState("");
   const [status, setStatus] = useState("");
@@ -29,13 +31,13 @@ export function SectionOneTab(props) {
     "Certificate_Testing_Handover8"
   );
   const [person_name, setPersonname] = useState();
-  const [auth_person_telephone_number, setAuthTele] = useState("7865467890");
+  const [auth_person_telephone_number, setAuthTele] = useState("");
   const [contractor_name, setContractorName] = useState("");
   const [contractor_telephone_number, setContractorTele] =
-    useState("8645678945");
+    useState("");
   const [representative_name, setRepresentative] = useState("");
   const [representative_telephone_number, setRepresentativeTele] =
-    useState("9856784567");
+    useState("");
   const [authorizedPersonDetails, setAuthorizedPersonDetails] = useState();
   const [contactorDetails, setContractorDetails] = useState();
   const [contactorRepDetails, setContractorRepDetails] = useState();
@@ -46,7 +48,6 @@ export function SectionOneTab(props) {
     IsDataFromAPI && IsDataFromAPI[0].flag === false
       ? setSiteOptions(Sites)
       : fetch(
-          "https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/sites"
         )
           .then((response) => response.json())
           .then((data) => {
@@ -61,7 +62,7 @@ export function SectionOneTab(props) {
     IsDataFromAPI && IsDataFromAPI[0].flag === false
       ? setAuthorizedPersonDetails(AuthUserDetails)
       : fetch(
-          "https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/contacts/authorized_person"
+          "https://localhost:7142/api/v1/contacts/Authorized"
         )
           .then((response) => response.json())
           .then((data) => {
@@ -76,7 +77,7 @@ export function SectionOneTab(props) {
     IsDataFromAPI && IsDataFromAPI[0].flag === false
       ? setContractorDetails(ContractorUserDetails)
       : fetch(
-          "https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/contacts/contractor"
+          "https://localhost:7142/api/v1/contacts/contractor"
         )
           .then((response) => response.json())
           .then((data) => {
@@ -91,7 +92,7 @@ export function SectionOneTab(props) {
     IsDataFromAPI && IsDataFromAPI[0].flag === false
       ? setContractorRepDetails(ContractorUserDetails)
       : fetch(
-          "https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/contacts/contractor"
+          "https://localhost:7142/api/v1/contacts/contractor"
         )
           .then((response) => response.json())
           .then((data) => {
@@ -106,7 +107,7 @@ export function SectionOneTab(props) {
     IsDataFromAPI && IsDataFromAPI[0].flag === false
       ? setCertificates(ContractorPersonData)
       : fetch(
-          "https://ccb7c3d4-e305-4b79-858f-6273fbfb1aa4.mock.pstmn.io/certificates"
+          "https://localhost:7142/api/v1/certificates"
         )
           .then((response) => response.json())
           .then((data) => {
@@ -149,23 +150,23 @@ export function SectionOneTab(props) {
       handback_Date: "",
       handback_Comment: "",
       createdOn: "12-12-2023 08:03:13 AM",
-      createdBy: "Paul Anderson",
+      createdBy: username,
       updatedOn: "",
       updatedBy: "",
       isActive: "True",
       status: "New",
     };
-    // console.log(formData);
-    // const response = await fetch("http://localhost:5000/api/login-user", {
-    //     method: "POST",
-    //     crossDomain: true,
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       "Access-Control-Allow-Origin": "*",
-    //       Accept: "application/json",
-    //     },
-    //     body: formData,
-    //   });
+    
+    const response = await fetch("https://localhost:7142/api/v1/certificates", {
+        method: "POST",
+        crossDomain: true,
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
     localStorage.setItem(
       "certificate_id",
@@ -268,7 +269,7 @@ export function SectionOneTab(props) {
             <Autocomplete
               id="authorizedPersonDetails"
               disabled={props.showDetails}
-              inputValue={"Tom Adena"}
+              
               options={authorizedPersonDetails?.map((item) => item?.name)}
               sx={{ width: 300 }}
               renderInput={(params) => (
@@ -299,7 +300,7 @@ export function SectionOneTab(props) {
             <Autocomplete
               id="Contrator_Details"
               disabled={props.showDetails}
-              inputValue={"Andy Aleby"}
+              
               options={contactorDetails?.map((item) => item?.name)}
               sx={{ width: 300 }}
               renderInput={(params) => (
