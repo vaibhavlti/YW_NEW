@@ -189,17 +189,23 @@ export function SectionOneTab(props) {
             <RadioGroup
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
+             
             >
+             {console.log(props?.certificate?.type)}
               <FormControlLabel
                 value="test"
-                control={<Radio name="type" id="type" />}
+                control={<Radio name="type" id="type" checked={
+                  props?.certificate?.type === "test" ? true : false
+                }/>}
                 label="Test"
                 disabled={props?.showDetails}
                 onChange={(e) => setType(e.target.value)}
               />
               <FormControlLabel
                 value="remedial"
-                control={<Radio name="type" id="type" />}
+                control={<Radio name="type" id="type" checked={
+                  props?.certificate?.type == "remedial" 
+                }/>}
                 label="Remedial"
                 disabled={props?.showDetails}
                 onChange={(e) => setType(e.target.value)}
