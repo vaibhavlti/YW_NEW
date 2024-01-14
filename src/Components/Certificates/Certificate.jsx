@@ -30,10 +30,14 @@ function Certificate() {
           <Grid xs={9} mt={"-64px"}>
             <div className=" overflow-cls">
               {/* {user && user.role === "Contractor" ? ( */}
-              <DataTable />
 
+              <Grid xs={9}>
+                <DataTable />
+              </Grid>
               {/* ) : (
+                <Grid xs={9}>
                 <AuthCertificateList />
+              </Grid>
               )} */}
             </div>
           </Grid>

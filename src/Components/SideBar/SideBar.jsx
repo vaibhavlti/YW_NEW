@@ -13,8 +13,8 @@ import {
   SidebarContent,
 } from "react-pro-sidebar";
 import { Typography } from "@mui/material";
-//import icons from react icons
-import { FiHome, FiLogOut, FiUsers } from "react-icons/fi";
+
+import { FiHome, FiUsers } from "react-icons/fi";
 import { HiPencilAlt } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 
@@ -29,8 +29,7 @@ const SideBar = () => {
   const navigate = useNavigate();
 
   //create initial menuCollapse state using useState hook
-  const [menuCollapse, setMenuCollapse] = useState(false);
-  const [active, setActive] = useState(false);
+  const [menuCollapse] = useState(false);
 
   const handleLogout = (e) => {
     // localStorage.removeItem('username');
@@ -81,9 +80,6 @@ const SideBar = () => {
               iconShape="square"
               style={{ paddingTop: 0, paddingBottom: 0 }}
             >
-              {/* <MenuItem icon={<FiLogOut />} onClick={(e) => handleLogout(e)}>
-                Logout
-              </MenuItem> */}
               <Typography variant="body2" color="white" align="center">
                 {"Copyright © "}
                 Yorkshire Water {new Date().getFullYear()}

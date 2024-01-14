@@ -24,33 +24,22 @@ import logo from "../../images/logo-nameless.png";
 const pages = [];
 
 function Header() {
+  const navigate = useNavigate();
   const userDetails = useSelector(
     (state) => state && state.commonReducer && state.commonReducer.user
   );
 
   //   const { user } = userDetails;
-
-  const navigate = useNavigate();
+  const username = localStorage.getItem("username");
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
+    // setAnchorElUser(event.currentTarget);
     navigate("/profile");
-  };
-
-  const username = localStorage.getItem("username");
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
   };
 
   const handleLogout = (e) => {
@@ -102,17 +91,12 @@ function Header() {
                 horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
               }}
             >
               {pages.map((page) => (
-                <MenuItem
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  icon={<FavoriteIcon />}
-                >
+                <MenuItem key={page} icon={<FavoriteIcon />}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -122,7 +106,6 @@ function Header() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
