@@ -64,6 +64,20 @@ export default function DataTable() {
     };
   });
 
+  // const handleRowClick = (rowData) => {
+  //   fetch("https://localhost:7142/api/v1/certificates")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setSelectedCert(
+  //         data.filter((val) => val.id.includes(rowData?.row?.id))[0]
+  //       );
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.message);
+  //     });
+  //   setShowList(false);
+  // };
+
   const handleRowClick = (rowData) => {
     setSelectedCert(certificates.filter(val => val.id.includes(rowData?.row?.id))[0]);
     setShowList(false);

@@ -23,7 +23,7 @@ import {
 
 export function SectionOneTab(props) {
   const username = localStorage.getItem("username");
-
+  console.log("Section Props", props);
   const [type, setType] = useState("");
   const [site, setSite] = useState("");
   const [status, setStatus] = useState("");
@@ -31,14 +31,18 @@ export function SectionOneTab(props) {
     "Certificate_Testing_Handover8"
   );
   const [person_name, setPersonname] = useState();
-  const [auth_person_telephone_number, setAuthTele] = useState("");
+  props?.certificates !== undefined
+      ? props?.certificates?.authorized_Person
+      : ""
   const [contractor_name, setContractorName] = useState("");
   const [contractor_telephone_number, setContractorTele] =
     useState("");
   const [representative_name, setRepresentative] = useState("");
   const [representative_telephone_number, setRepresentativeTele] =
     useState("");
-  const [authorizedPersonDetails, setAuthorizedPersonDetails] = useState();
+  const [authorizedPersonDetails, setAuthorizedPersonDetails] = useState(props?.certificates !== undefined
+    ? props?.certificates?.authorized_Person
+    : "");
   const [contactorDetails, setContractorDetails] = useState();
   const [contactorRepDetails, setContractorRepDetails] = useState();
   const [siteOptions, setSiteOptions] = useState();
@@ -277,7 +281,9 @@ export function SectionOneTab(props) {
                 <TextField
                   {...params}
                   onChange={(e) => setPersonname(e.target.value)}
+                  value={authorizedPersonDetails}
                 />
+
               )}
             />
           </Grid>
