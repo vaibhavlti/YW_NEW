@@ -34,13 +34,11 @@ const columns = [
 export default function DataTable() {
   const [certificates, setCertificates] = useState([]);
   const [showList, setShowList] = useState(true);
-  const [certificateDetails, setCertificateDetails] = useState([]);
+  const [, setCertificateDetails] = useState([]);
   useEffect(() => {
     IsDataFromAPI && IsDataFromAPI[0].flag === false
       ? setCertificates(ContractorPersonData)
-      : fetch(
-          "https://localhost:7142/api/v1/certificates"
-        )
+      : fetch("https://localhost:7142/api/v1/certificates")
           .then((response) => response.json())
           .then((data) => {
             setCertificates(data);
@@ -51,9 +49,7 @@ export default function DataTable() {
   }, []);
 
   const handleRowClick = () => {
-    fetch(
-      "https://localhost:7142/api/v1/certificates"
-    )
+    fetch("https://localhost:7142/api/v1/certificates")
       .then((response) => response.json())
       .then((data) => {
         setCertificateDetails(data);
@@ -90,11 +86,6 @@ export default function DataTable() {
           >
             Certificate list
           </Typography>
-          {/* <Grid
-        container
-        width="50%"
-      > */}
-          {/* <Grid item xs={12} md={4} mb={2} ml={2}> */}
           <Box display="flex">
             <Box mb="10px">
               <TextField
@@ -114,14 +105,6 @@ export default function DataTable() {
                 }}
               />
             </Box>
-            {/* </Grid> */}
-            {/* <Grid item xs={12} md={2}>
-          <Button variant="contained">Filter</Button>
-        </Grid>
-        <Grid item xs={12} md={2}>
-          <Button variant='outlined'> <ImportExportIcon />Sort</Button>
-        </Grid> */}
-            {/* <Grid item xs={12} md={5} ml="auto"> */}
             <Box mb="10px" ml="auto">
               <Button
                 variant="contained"

@@ -3,11 +3,7 @@ import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box, InputAdornment, TextField, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-// import ImportExportIcon from '@mui/icons-material/ImportExport';
 import { ViewAuthCertificate } from "./ViewAuthCertificate";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-// import { AuthPersonData, IsDataFromAPI } from './DataCollection';
 
 const columns = [
   { field: "Handover_Ref", headerName: "Handover Ref", width: 250 },
@@ -26,31 +22,26 @@ const columns = [
 ];
 
 export default function AuthCertificateList() {
-  // const userDetails = useSelector(
-  //   (state) => state && state.commonReducer && state.commonReducer.user
-  // );
-
-  // const { token, user } = userDetails;
+  const [showList, setShowList] = useState(true);
   const username = localStorage.getItem("username");
   const [certificates, setCertificates] = useState([]);
-  const [showList, setShowList] = useState(true);
   const [certificateDetails, setCertificateDetails] = useState([]);
 
-  let IsDataFromAPI = true;//localStorage.getItem("IsDataFromAPI");
+  let IsDataFromAPI = true;
   let AuthPersonData = JSON.parse(localStorage.getItem("AuthPersonData"));
-  
+
   useEffect(() => {
     IsDataFromAPI === false
       ? setCertificates(AuthPersonData)
-      : fetch(
-          "https://localhost:7142/api/v1/certificates"
-        )
+      : fetch("https://localhost:7142/api/v1/certificates")
           .then((response) => response.json())
           .then((data) => {
             setCertificates(
               data && data.length
                 ? data.filter(
-                     (val, index) => val.authorized_Person === username && val.status==='Handover To Approve'
+                    (val) =>
+                      val.authorized_Person === username &&
+                      val.status === "Handover To Approve"
                   )
                 : AuthPersonData
             );
@@ -61,14 +52,14 @@ export default function AuthCertificateList() {
   }, []);
 
   const handleRowClick = (cid) => {
-    fetch('https://localhost:7142/api/v1/certificates')
-    .then((response) => response.json())
-    .then((data) => {
-      setCertificateDetails(data);
-    })
-    .catch((err) => {
-       console.log(err.message);
-    });
+    fetch("https://localhost:7142/api/v1/certificates")
+      .then((response) => response.json())
+      .then((data) => {
+        setCertificateDetails(data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
 
     setCertificateDetails(
       AuthPersonData?.filter((val, index) => val.id === cid)
@@ -87,26 +78,20 @@ export default function AuthCertificateList() {
       Start_Date: item?.commence_Date,
     };
   });
-  let navigate = useNavigate();
 
   return (
     <>
       {showList ? (
-        <Box padding={2}>
+        <Box border="1px solid" padding={2}>
           <Typography
-            fontWeight="600 !important"
-            lineHeight="45px !important"
-            fontSize="30px !important"
-            color="#131C42 !important"
+            fontWeight="600"
+            lineHeight="45px"
+            fontSize="30px"
+            color="#131C42"
             ml={2}
           >
             Certificate list
           </Typography>
-          {/* <Grid
-        container
-        width="50%"
-      > */}
-          {/* <Grid item xs={12} md={4} mb={2} ml={2}> */}
           <Box display="flex">
             <Box mb="10px">
               <TextField
@@ -126,28 +111,12 @@ export default function AuthCertificateList() {
                 }}
               />
             </Box>
-            {/* </Grid> */}
-            {/* <Grid item xs={12} md={2}>
-          <Button variant="contained">Filter</Button>
-        </Grid>
-        <Grid item xs={12} md={2}>
-          <Button variant='outlined'> <ImportExportIcon />Sort</Button>
-        </Grid> */}
-            {/* <Grid item xs={12} md={5} ml="auto"> */}
-            {/* <Box mb="10px" ml="auto">
-
-          <Button variant='contained' onClick={()=>{navigate('/certification')}}>
-            Add new certificate</Button>
-            </Box> */}
           </Box>
-          {/* </Grid> */}
-          {/* </Grid> */}
           <Box>
             <DataGrid
               rows={rows}
               columns={columns}
-              //   getRowId={() => Math.floor(Math.random() * 100000000)}
-              getRowId={(row) => row.cid}
+              getRowId={() => Math.floor(Math.random() * 100000000)}
               initialState={{
                 pagination: {
                   paginationModel: { page: 0, pageSize: 5 },
@@ -155,16 +124,13 @@ export default function AuthCertificateList() {
               }}
               sx={{
                 display: "flex",
-                marginRight: "0px",
-                pr: "0px",
-                textAlign: "center",
+                justifyContent: "center",
+                ".MuiToolbar-root": {
+                  width: "90%",
+                },
               }}
               pageSizeOptions={[5, 10]}
-              onRowClick={(params, event) => {
-                if (!event.ignore) {
-                  handleRowClick(params.row.cid);
-                }
-              }}
+              onRowClick={handleRowClick}
               checkboxSelection
             />
           </Box>
