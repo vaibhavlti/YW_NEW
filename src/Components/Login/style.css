@@ -9,9 +9,6 @@ body {
   background-size: auto;
 }
 
-/* .css-1nv1o5k-MuiGrid-root{
-
-} */
 .css-zxdg2z {
   display: none;
 }
@@ -33,7 +30,7 @@ body {
 .css-wvz34p {
   width: 1044px !important;
   margin-left: -10px !important;
-  /* margin-top: 80px; */
+
   height: 500px;
   overflow-y: auto;
 }
@@ -48,12 +45,12 @@ body {
   font-weight: 600;
   color: #0d6efd !important;
 }
+
 #uncontrolled-tab-example {
   overflow: scroll !important;
 }
 
 .box-container {
-  /* border: 4px solid #22B1DD; */
   margin-top: 80px;
   margin-left: 5px;
   margin-right: 5px;
@@ -74,6 +71,7 @@ body {
   color: #2fb5de !important;
   position: fixed !important;
 }
+
 .MuiDrawer-paper {
   width: 184px;
 }
@@ -86,7 +84,6 @@ body {
   color: #2fb5de !important;
   font-weight: 500 !important;
   height: 480px !important;
-  /* height: auto; */
   margin-top: 0px;
   width: 184px;
   text-decoration: none;
@@ -134,19 +131,11 @@ body {
   border-radius: 4px;
   border: 1px;
   gap: 12px;
-  /* height: Hug (527px);
-  top: 25%;
-  left: 25%;
-  padding: 60px;
-  border-radius: 4px;
-  border: 1px;
-  gap: 12px; */
 }
 .mt-65 {
   margin-top: -30px !important;
 }
 .mt-10 {
-  /* margin-top: 87px !important; */
   margin-left: -60px !important;
 }
 .img_login {
@@ -156,10 +145,8 @@ body {
 .nav-item {
   border: 1px solid #ddd !important;
   margin-right: 15px;
-  /* border-radius: 5px !important;  */
   border-radius: 5px 5px 0 0;
   background: #f4efef;
-  /* linear-gradient(0deg, #FFFFFF, #FFFFFF); */
   color: black !important;
 }
 .nav-link {

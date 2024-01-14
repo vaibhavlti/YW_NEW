@@ -2,29 +2,10 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-import {
-  Button,
-  CssBaseline,
-  TextField,
-  Link,
-  Paper,
-  Box,
-  Grid,
-  Typography,
-} from "@material-ui/core";
+import { Link, Box, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { LoginSchema } from "./Schema";
 import { login } from "../../store/reducers/common-reducers";
-import {
-  AuthPersonData,
-  ContractorPersonData,
-  IsDataFromAPI,
-  AuthUserDetails,
-  ContractorUserDetails,
-  Sites,
-  EquipmentDetails,
-  Certificates,
-} from "./DataCollection";
 
 import logo from "../../images/logo.png";
 import ImageBG from "../../images/login_page_background.png";
@@ -72,41 +53,45 @@ const Login = () => {
     onSubmit: async (values, { resetForm }) => {
       const formData = JSON.stringify(values);
       const { email, password } = values;
-  
 
-      const response = await fetch("https://localhost:7142/api/v1/login?mobileNo="+email+"&password="+password, {
-        method: "POST",
-        crossDomain: true,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          Accept: "application/json",
-        },
-        body: formData,
-      });
+      const response = await fetch(
+        "https://localhost:7142/api/v1/login?mobileNo=" +
+          email +
+          "&password=" +
+          password,
+        {
+          method: "POST",
+          crossDomain: true,
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            Accept: "application/json",
+          },
+          body: formData,
+        }
+      );
 
       const data = await response.json();
 
-   if (data) {
-    console.log('test',data.user);
+      if (data) {
+        if (
+          data.user.role === "Contractor" ||
+          data.user.role === "Authorized Person"
+        ) {
+          localStorage.setItem("username", data.user.name);
+          localStorage.setItem("role", data.user.role);
+          localStorage.setItem("mobileNumber", data.user.mobileNumber);
+          localStorage.setItem("token", data.token);
+          dispatch(
+            login({
+              token: data.token,
+              user: data.user,
+            })
+          );
+          navigate("/home");
+        }
+      }
 
-    if(data.user.role==='Contractor' || data.user.role ==='Authorized Person')
-    {
-     
-      localStorage.setItem('username', data.user.name);
-      localStorage.setItem('role', data.user.role);
-      localStorage.setItem('mobileNumber', data.user.mobileNumber);
-      localStorage.setItem('token', data.token);
-      dispatch(
-        login({
-          "token": data.token,
-          "user": data.user
-        })
-      );
-      navigate("/home");
-    }
-  }
-     
       setLoading(true);
       setTimeout(() => {
         setLoading(false);

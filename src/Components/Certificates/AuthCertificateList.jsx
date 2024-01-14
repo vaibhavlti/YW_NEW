@@ -55,14 +55,13 @@ export default function AuthCertificateList() {
     fetch("https://localhost:7142/api/v1/certificates")
       .then((response) => response.json())
       .then((data) => {
-        console.log("AuthCert:"+ data);
+        console.log("AuthCert:" + data);
         setCertificateDetails(data);
       })
       .catch((err) => {
         console.log(err.message);
       });
 
-  
     setShowList(false);
   };
   const rows = certificates?.map((item, index) => {
@@ -115,7 +114,6 @@ export default function AuthCertificateList() {
               rows={rows}
               columns={columns}
               getRowId={(row) => row.cid}
-              //getRowId={() => Math.floor(Math.random() * 100000000)}
               initialState={{
                 pagination: {
                   paginationModel: { page: 0, pageSize: 5 },
@@ -129,7 +127,6 @@ export default function AuthCertificateList() {
                 },
               }}
               pageSizeOptions={[5, 10]}
-              //onRowClick={handleRowClick}
               onRowClick={(params, event) => {
                 if (!event.ignore) {
                   handleRowClick(params.row.cid);

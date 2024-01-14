@@ -16,7 +16,6 @@ import { Typography } from "@mui/material";
 
 import { FiHome, FiUsers } from "react-icons/fi";
 import { HiPencilAlt } from "react-icons/hi";
-import { useNavigate } from "react-router-dom";
 
 import Header from "../Header/Header";
 
@@ -26,20 +25,8 @@ import "./SideBar.css";
 import logo from "../../images/logo.png";
 
 const SideBar = () => {
-  const navigate = useNavigate();
-
   //create initial menuCollapse state using useState hook
   const [menuCollapse] = useState(false);
-
-  const handleLogout = (e) => {
-    // localStorage.removeItem('username');
-    // localStorage.removeItem('token');
-    // localStorage.removeItem('role');
-    // localStorage.removeItem('mobileNumber');
-    // setIsLoggedin(false);
-    e.preventDefault();
-    navigate("/");
-  };
 
   return (
     <>
@@ -48,7 +35,6 @@ const SideBar = () => {
           <SidebarHeader>
             <div className="logotext">
               <img src={logo} className="img-home" alt={"logo"} />
-
               <Header />
             </div>
           </SidebarHeader>

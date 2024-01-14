@@ -25,7 +25,6 @@ function App() {
             <Route path="/profile" element={<ProfileForm />} />
             <Route path="/certificates" element={<Certificate />} />
             <Route path="certificate-form" element={<CertificateForm />} />
-            {/* <Route path="*" element={<NoPage />} />  */}
           </Route>
           <Route exact path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
